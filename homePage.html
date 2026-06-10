@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنيان تك | أكاديمية البرمجة والتكنولوجيا 🚀</title>
+    
+    <!-- Google Fonts - Premium Arabic Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css for Entrance Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Lottie Player for Animations -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest"></script>
+    
+    <style>
+        /* ============================================
+           ROOT VARIABLES - Modern Color Palette
+           ============================================ */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --secondary-dark: #be185d;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f97316;
+            
+            --bg-main: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --text-lighter: #94a3b8;
+            --text-white: #ffffff;
+            
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+            
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.15);
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-smooth: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            
+            --nav-height: 80px;
+            --max-width: 1400px;
+        }
+
+        /* ============================================
+           GLOBAL STYLES
+           ============================================ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: all var(--transition-normal);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 30px;
+            height: var(--nav-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform var(--transition-fast);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            transition: width var(--transition-normal);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 30px 80px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e0e7ff 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 35px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .hero-animation {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ============================================
+           FEATURES SECTION
+           ============================================ */
+        .features-section {
+            padding: 100px 30px;
+            background: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .section-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--transition-normal);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 25px;
+            transition: transform var(--transition-normal);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           COURSES SECTION
+           ============================================ */
+        .courses-section {
+            padding: 100px 30px;
+            background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .course-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-smooth);
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .course-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0) 0%, rgba(236, 72, 153, 0.1) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+            pointer-events: none;
+        }
+
+        .course-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .course-card:hover::after {
+            opacity: 1;
+        }
+
+        .course-image-wrapper {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .course-card:hover .course-image {
+            transform: scale(1.1);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--warning) 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-category {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .course-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-item i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .course-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-price-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: block;
+            margin-top: -5px;
+        }
+
+        .register-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            white-space: nowrap;
+        }
+
+        .register-btn:hover {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+        }
+
+        /* ============================================
+           LOADING & ERROR STATES
+           ============================================ */
+        .loading-container {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--border-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .error-msg {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 700;
+            border-left: 5px solid #dc2626;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+        }
+
+        .error-msg i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* ============================================
+           TESTIMONIALS SECTION
+           ============================================ */
+        .testimonials-section {
+            padding: 100px 30px;
+            background: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-weight: 900;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stars {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-text {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            padding: 80px 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-button-white {
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button-white:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-white);
+            padding: 80px 30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            color: var(--text-lighter);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-lighter);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-lighter);
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            :root {
+                --nav-height: 70px;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 80px 20px 60px;
+                min-height: auto;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-animation {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .features-grid,
+            .courses-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-container {
+                padding: 0 20px;
+            }
+
+            .features-section,
+            .courses-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .feature-card,
+            .course-card,
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .course-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .register-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER & NAVIGATION
+         ============================================ -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                بنيان <span>تك</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">المميزات</a>
+                <a href="#courses" class="nav-link">الكورسات</a>
+                <a href="#testimonials" class="nav-link">آراء الطلاب</a>
+                <a href="#contact" class="nav-link">تواصل معنا</a>
+                <a href="#courses" class="cta-button">ابدأ الآن <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    ابنِ مستقبلك <br>
+                    <span>بسطور من الكود</span>
+                </h1>
+                <p class="hero-subtitle">
+                    انضم إلى أكاديمية بنيان تك وتعلم البرمجة من الصفر مع أفضل المدربين. نحن نقدم كورسات عملية وحديثة في جميع لغات البرمجة والتطوير.
+                </p>
+                
+             <!-- 
+<div class="hero-stats">
+    <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">طالب متخرج</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">كورس متاح</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">معدل الرضا</div>
+    </div>
+</div>
+-->
+
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn-primary">
+                        <i class="fas fa-play-circle"></i>
+                        استكشف الكورسات
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        تواصل معنا
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-animation">
+   <div class="hero-animation">
+     <img src="./HOME PAGE LOGO.png" alt="Bonyan Tech Logo" style="width: 100%; height: 500px; object-fit: contain;">
+</div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURES SECTION
+         ============================================ -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    لماذا <span>بنيان تك</span>؟
+                </h2>
+                <p class="section-subtitle">
+                    نحن نوفر أفضل بيئة تعليمية لتطوير مهاراتك البرمجية بطريقة احترافية وعملية
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="feature-title">مدربون محترفون</h3>
+                    <p class="feature-description">
+                        فريق من مهندسي البرمجة ذوي الخبرة العملية   
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="feature-title">محتوى عملي</h3>
+                    <p class="feature-description">
+                        تعلم من خلال مشاريع حقيقية وتطبيقات عملية تستخدم في سوق العمل
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="feature-title"> شهاده تُثبت جدارتك </h3>
+                    <p class="feature-description">أنهِ الكورس بكفاءة، واحصل على شهادة إنجاز تعكس تميزك ومهارتك الحقيقية
+                    </p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">مجتمع نشط</h3>
+                    <p class="feature-description">
+                        تواصل مع آلاف الطلاب والمدربين وتبادل الخبرات والمشاريع
+                    </p>
+                </div>
+
+                <!-- 
+<div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+    <div class="feature-icon">
+        <i class="fas fa-headset"></i>
+    </div>
+    <h3 class="feature-title">دعم 24/7</h3>
+    <p class="feature-description">
+        فريق الدعم متاح طوال الوقت للإجابة على أسئلتك ومساعدتك
+    </p>
+</div>
+-->
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         COURSES SECTION
+         ============================================ -->
+    <section class="courses-section" id="courses">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    كورساتنا <span>المتاحة</span>
+                </h2>
+                <p class="section-subtitle">
+                    اختر من بين مجموعة متنوعة من الكورسات المتخصصة في مختلف مجالات البرمجة
+                </p>
+            </div>
+
+            <div class="courses-grid" id="courses-container">
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <p class="loading-text">جاري تحميل الكورسات الرائعة...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TESTIMONIALS SECTION
+         ============================================ -->
+   <!-- 
+<section class="testimonials-section" id="testimonials">
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">
+                آراء <span>طلابنا</span>
+            </h2>
+            <p class="section-subtitle">
+                استمع إلى ما يقوله طلابنا عن تجربتهم في بنيان تك
+            </p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "كورسات بنيان تك غيرت حياتي المهنية تماماً. المحتوى واضح والمدربون محترفون جداً. الآن أعمل كمطور ويب في شركة كبرى!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">أ.م</div>
+                    <div class="author-info">
+                        <h4>أحمد محمود</h4>
+                        <p>مطور ويب</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "أفضل استثمار قمت به هو الالتحاق بكورسات بنيان تك. جودة التعليم عالية جداً والأسعار معقولة جداً."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ف.ع</div>
+                    <div class="author-info">
+                        <h4>فاطمة علي</h4>
+                        <p>مطورة تطبيقات</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "الدعم الفني والمجتمع في بنيان تك رائع جداً. كل سؤال أسأله يتم الرد عليه بسرعة واحترافية."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">م.ح</div>
+                    <div class="author-info">
+                        <h4>محمد حسن</h4>
+                        <p>مهندس برمجيات</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>هل أنت مستعد لبدء رحلتك البرمجية؟</h2>
+            <p>
+                انضم إلى مئات الطلاب الذين غيروا مسارهم الوظيفي مع بنيان تك. ابدأ تعلمك اليوم!
+            </p>
+            <a href="#courses" class="cta-button-white">
+                <i class="fas fa-arrow-left"></i>
+                اختر كورسك الآن
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>عن بنيان تك</h3>
+                <p>
+                    أكاديمية متخصصة في تعليم البرمجة والتطوير بطرق حديثة وعملية. نحن نهدف إلى تمكين الجيل القادم من المطورين.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>الكورسات</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> البرمجة بلغة Python</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> تطوير الويب</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> تطوير التطبيقات</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> قواعد البيانات</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> الرئيسية</a></li>
+                    <li><a href="#features"><i class="fas fa-arrow-left"></i> المميزات</a></li>
+                    <li><a href="#courses"><i class="fas fa-arrow-left"></i> الكورسات</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+20123456789"><i class="fas fa-phone"></i> +20 123 456 789</a></li>
+                    <li><a href="mailto:info@bonyantec.com"><i class="fas fa-envelope"></i> info@bonyantec.com</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 بنيان تك. جميع الحقوق محفوظة.</p>
+            <p>تم تطويره بـ ❤️ من قبل فريق بنيان تك</p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- SweetAlert2 for Notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="config.js"></script>
+<script>
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        
+        /**
+         * 🔗 رابط الـ Web App الخاص بك من Google Apps Script
+         * استبدل الرابط أدناه بالرابط الذي حصلت عليه بعد النشر (Deploy)
+         * مثال: https://script.google.com/macros/d/{SCRIPT_ID}/usercache/v1
+         */
+        
+        // صور افتراضية متنوعة للكورسات
+        const defaultImages = [
+            "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=800&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=800&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1633356122544-f134324ef6db?q=80&w=800&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1516321318423-f06f70d504f0?q=80&w=800&h=400&fit=crop"
+        ];
+ 
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+
+        /**
+         * Converts a Google Drive view link to a direct image link.
+         * @param {string} driveLink The Google Drive view link.
+         * @returns {string} The direct image link or the original link if not a Drive link.
+         */
+       function getDirectDriveImageLink(driveLink) {
+    const regex = /\/d\/([a-zA-Z0-9_-]+)/;
+    const match = driveLink.match(regex);
+
+    if (match) {
+        const fileId = match[1];
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+    }
+
+    return driveLink;
+}
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        
+        // تهيئة AOS (Animate On Scroll )
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // تحميل الكورسات عند تحميل الصفحة
+        window.addEventListener('load', loadCourses);
+
+        // ============================================
+        // HEADER SCROLL EFFECT
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // LOAD COURSES FUNCTION
+        // ============================================
+       // ============================================
+        // LOAD COURSES FUNCTION (النسخة المصححة والمؤمنة)
+        // ============================================
+        async function loadCourses() {
+            const container = document.getElementById('courses-container');
+            
+            try {
+                // 🌟 تعديل أمان: إذا كان الرابط فارغاً ولم يقرأ من config.js
+                if (!appsScriptUrl || appsScriptUrl.trim() === "") {
+                    console.warn("📌 لم يتم تعيين رابط Google Apps Script في ملف config.js الحامي.");
+                    container.innerHTML = `
+                        <div class="error-msg">
+                            <i class="fas fa-exclamation-circle" style="font-size: 2.5rem; color: #f59e0b;"></i>
+                            <p style="margin-top: 15px; font-weight: bold;">يرجى التحقق من إعدادات قاعدة البيانات! 📡</p>
+                            <p style="font-size: 0.9rem; margin-top: 5px; opacity: 0.8;">
+                                تأكدي من حفظ الرابط السري داخل ملف config.js بشكل صحيح ومطابق للاسم APPS_SCRIPT_URL.
+                            </p>
+                        </div>`;
+                    return; // الخروج بسلام دون استدعاء متغيرات مفقودة
+                }
+
+                // جلب البيانات من Google Apps Script
+                console.log("📡 جاري جلب البيانات الحية من السحابة...");
+                const response = await fetch(appsScriptUrl, { 
+                    method: 'GET', 
+                    redirect: 'follow'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayCourses(data);
+            } catch (error) {
+                console.error("❌ خطأ في جلب الكورسات الحية:", error);
+                container.innerHTML = `
+                    <div class="error-msg">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #ef4444;"></i>
+                        <p style="margin-top: 15px; font-weight: bold;">عذراً، لم نتمكن من جلب الكورسات حالياً.</p>
+                        <p style="font-size: 0.9rem; margin-top: 5px; opacity: 0.8;">
+                            تأكدي من نشر الـ Apps Script كـ Web App وإعطاء صلاحية الوصول لـ Anyone.
+                        </p>
+                    </div>`;
+            }
+        }
+
+        // ============================================
+        // DISPLAY COURSES FUNCTION
+        // ============================================
+        function displayCourses(courses) {
+            const container = document.getElementById('courses-container');
+            container.innerHTML = '';
+
+            if (!courses || courses.length === 0) {
+                container.innerHTML = `
+                    <div class="error-msg">
+                        <i class="fas fa-inbox"></i>
+                        <p>قريباً.. ترقبوا إطلاق أقوى الكورسات البرمجية! 🎓</p>
+                    </div>`;
+                return;
+            }
+
+            courses.forEach((course, index) => {
+                const card = document.createElement('div');
+                card.className = 'course-card animate__animated animate__fadeInUp';
+                card.style.animationDelay = `${index * 0.1}s`;
+
+                // معالجة البيانات
+                let courseImg = course.ImageURL && course.ImageURL.trim() !== '' ? course.ImageURL : defaultImages[index % defaultImages.length];
+                // Convert Google Drive view links to direct links
+                courseImg = getDirectDriveImageLink(courseImg);
+
+                const price = parseFloat(course.Price) || 0;
+                const priceDisplay = price === 0 ? "مجاناً" : `${price} ج.م`;
+                const badgeText = price === 0 ? "هدية" : "مميز";
+
+                card.innerHTML = `
+                    <div class="course-image-wrapper">
+                        <img src="${courseImg}" alt="${course.CourseName}" class="course-image" onerror="this.onerror=null;this.src='${defaultImages[0]}';">
+                        <span class="course-badge">${badgeText}</span>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">${course.CourseName}</h3>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-user-tie"></i>
+                                <span>${course.Instructor || 'مدرب محترف'}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>${course.Duration || 'مرن'}</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div>
+                                <span class="course-price">${priceDisplay}</span>
+                            </div>
+                            <button class="register-btn" onclick="openRegistration('${course.ID}', '${course.CourseName}')">
+                                احجز الآن <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // ============================================
+        // REGISTRATION FUNCTION
+        // ============================================
+        function openRegistration(courseId, courseName) {
+            Swal.fire({
+                title: 'تأكيد الحجز',
+                html: `<p style="font-size: 1rem; margin: 20px 0;">هل ترغب في التسجيل في كورس:</p><p style="font-weight: bold; color: #6366f1; font-size: 1.1rem;">${courseName}</p>`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'نعم، سجلني!',
+                cancelButtonText: 'إلغاء',
+                confirmButtonColor: '#6366f1',
+                cancelButtonColor: '#64748b',
+                customClass: {
+                    popup: 'swal-popup-rtl'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'تم بنجاح! ✅',
+                        html: `<p>تم استلام طلب التسجيل في الكورس:</p><p style="font-weight: bold; color: #10b981;">${courseName}</p><p style="font-size: 0.9rem; color: #64748b; margin-top: 15px;">سيتم التواصل معك قريباً على بريدك الإلكتروني</p>`,
+                        icon: 'success',
+                        confirmButtonColor: '#6366f1'
+                    });
+                    
+                    // يمكنك إضافة كود لحفظ البيانات في Google Sheets هنا
+                    console.log(`✅ تم التسجيل في الكورس: ${courseName} (ID: ${courseId})`);
+                }
+            });
+        }
+
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // CONSOLE WELCOME MESSAGE
+        // ============================================
+        console.log('%c🚀 مرحباً بك في بنيان تك!', 'font-size: 20px; color: #6366f1; font-weight: bold;');
+        console.log('%c📚 أكاديمية البرمجة والتكنولوجيا', 'font-size: 14px; color: #ec4899;');
+        console.log('%c💡 لإضافة كورساتك من Google Sheets، استبدل رابط appsScriptUrl بالرابط الخاص بك', 'font-size: 12px; color: #f59e0b;');
+    </script>
+
+
+</body>
+</html>
