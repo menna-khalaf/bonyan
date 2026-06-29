@@ -1,19 +1,24 @@
 export default async function handler(req, res) {
-    // السيرفر بيقرا الرابط السري اللي في إعدادات فيرسيل في صمت تماماً
-    const url = process.env.APPS_SCRIPT_URL;
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    if (!url) {
-        return res.status(500).json({ 
-            error: "Missing APPS_SCRIPT_URL in Vercel env variables" 
-        });
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
     }
 
     try {
+        const url = process.env.APPS_SCRIPT_URL;
+        if (!url) {
+            return res.status(500).json({ error: "Missing APPS_SCRIPT_URL environment variable" });
+        }
+
         const response = await fetch(url);
         const data = await response.json();
-        // يبعت البيانات للمتصفح جاهزة
-        res.status(200).json(data);
+        return res.status(200).json(data);
+
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch data" });
+        return res.status(500).json({ error: error.message });
     }
 }
